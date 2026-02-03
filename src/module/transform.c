@@ -20,10 +20,11 @@ Transform *Transform_Create(Vector position, Vector scale, double rotation)
     return transform;
 }
 
-void Transform_Destroy(Transform *self)
+void Transform_Destroy(Module *self)
 {
+    Transform *transform = (Transform *)self;
     if (self == NULL)
         return;
-    Module_Destroy(self->base);
+    Module_Destroy(transform->base);
     free(self);
 }

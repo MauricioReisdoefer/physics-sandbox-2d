@@ -16,3 +16,8 @@ Module *Module_Create(ModuleType type, UpdateFunction update, DestroyFunction de
     newModule->destroy = destroy;
     return newModule;
 }
+void Module_Destroy(Module *self)
+{
+    if (self != NULL)
+        free(self);
+}

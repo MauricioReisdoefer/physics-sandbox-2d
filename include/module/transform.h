@@ -13,7 +13,7 @@ typedef struct Transform
 } Transform;
 
 Transform *Transform_Create(Vector position, Vector scale, double rotation);
-void Transform_Destroy(Transform *self);
+void Transform_Destroy(Module *self);
 UpdateFunction Transform_Update(float deltaTime);
 
 #endif
