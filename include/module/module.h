@@ -21,7 +21,4 @@ typedef struct Module
     ModuleType type;
 } Module;
 
-Module *Module_Create(ModuleType type, UpdateFunction update, DestroyFunction destroy);
-void Module_Destroy(Module *self);
-
 #endif

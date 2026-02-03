@@ -5,19 +5,9 @@
 #include "module.h"
 #include "vector.h"
 
-Transform *Transform_Create(Vector position, Vector scale, double rotation)
+UpdateFunction Transform_Update(float deltaTime)
 {
-    Transform *transform = (Transform *)malloc(sizeof(Transform));
-    if (transform == NULL)
-    {
-        return NULL;
-    }
-    transform->base = *Module_Create(MODULE_TRANSFORM, Transform_Update, Transform_Destroy);
-    transform->position = position;
-    transform->scale = scale;
-    transform->rotation = rotation;
-
-    return transform;
+    void;
 }
 
 void Transform_Destroy(Module *self)
@@ -25,6 +15,24 @@ void Transform_Destroy(Module *self)
     Transform *transform = (Transform *)self;
     if (self == NULL)
         return;
-    Module_Destroy(&transform->base);
     free(self);
+}
+
+Transform *Transform_Create(Vector position, Vector scale, double rotation)
+{
+    Transform *transform = (Transform *)malloc(sizeof(Transform));
+    if (transform == NULL)
+    {
+        return NULL;
+    }
+    transform->base.type = MODULE_TRANSFORM;
+    transform->base.update = Transform_Update;
+    transform->base.destroy = Transform_Destroy;
+    transform->base.owner = NULL;
+
+    transform->position = position;
+    transform->scale = scale;
+    transform->rotation = rotation;
+
+    return transform;
 }
