@@ -3,8 +3,24 @@
 
 #include "rigidbody.h"
 
-void Rigidbody_Destroy(Rigidbody *self);
-void Rigidbody_AddForce(Rigidbody *self, Vector vector);
+void Rigidbody_Destroy(Module *self)
+{
+    Rigidbody *rigidbody = (Rigidbody *)self;
+    if (self == NULL)
+        return;
+    free(rigidbody);
+
+    rigidbody = NULL;
+    self = NULL;
+}
+void Rigidbody_AddForce(Rigidbody *self, Vector vector)
+{
+    if (self == NULL)
+    {
+        return;
+    }
+    self->force = Vector_Sum(self->force, vector);
+}
 void Rigidbody_Update(float deltaTime);
 
 Rigidbody *Rigidbody_Create(

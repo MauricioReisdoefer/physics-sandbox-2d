@@ -24,7 +24,7 @@ Rigidbody *Rigidbody_Create(
     double mass,
     double damping);
 
-void Rigidbody_Destroy(Rigidbody *self);
+void Rigidbody_Destroy(Module *self);
 void Rigidbody_AddForce(Rigidbody *self, Vector vector);
 void Rigidbody_Update(float deltaTime);
 
