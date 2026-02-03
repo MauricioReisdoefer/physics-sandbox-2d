@@ -7,7 +7,7 @@
 
 typedef struct Entity
 {
-    Module modules[MAX_MODULES];
+    Module *modules[MAX_MODULES];
     int module_count;
 } Entity;
 
