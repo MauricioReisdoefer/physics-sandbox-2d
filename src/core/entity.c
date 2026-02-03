@@ -32,7 +32,7 @@ void Entity_Destroy(Entity *self)
     for (int i = 0; i < self->module_count; i++)
     {
         if (self->modules[i] != NULL)
-            Module_Destroy(self->modules[i]);
+            self->modules[i]->destroy(self->modules[i]);
     }
 
     free(self);
