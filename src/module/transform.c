@@ -16,7 +16,6 @@ void Transform_Destroy(Module *self)
     if (self == NULL)
         return;
     free(transform);
-    free(self);
 
     transform = NULL;
     self = NULL;

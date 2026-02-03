@@ -28,13 +28,13 @@ void Entity_Destroy(Entity *self)
         printf("Entity_Destroy: self is NULL\n");
         return;
     }
-
     for (int i = 0; i < self->module_count; i++)
     {
         if (self->modules[i] != NULL)
+        {
             self->modules[i]->destroy(self->modules[i]);
+        }
     }
-
     free(self);
     self = NULL;
 }
