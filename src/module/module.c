@@ -17,5 +17,6 @@ Module *Module_Create(ModuleType type, UpdateFunction update)
 }
 void Module_Destroy(Module *self)
 {
-    free(self);
+    if (self != NULL)
+        free(self);
 }
