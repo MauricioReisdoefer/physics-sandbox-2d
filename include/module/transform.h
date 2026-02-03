@@ -6,7 +6,7 @@
 
 typedef struct Transform
 {
-    Module *base;
+    Module base;
     Vector position;
     Vector scale;
     double rotation;

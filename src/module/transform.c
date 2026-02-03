@@ -12,7 +12,7 @@ Transform *Transform_Create(Vector position, Vector scale, double rotation)
     {
         return NULL;
     }
-    transform->base = Module_Create(MODULE_TRANSFORM, Transform_Update, Transform_Destroy);
+    transform->base = *Module_Create(MODULE_TRANSFORM, Transform_Update, Transform_Destroy);
     transform->position = position;
     transform->scale = scale;
     transform->rotation = rotation;
@@ -25,6 +25,6 @@ void Transform_Destroy(Module *self)
     Transform *transform = (Transform *)self;
     if (self == NULL)
         return;
-    Module_Destroy(transform->base);
+    Module_Destroy(&transform->base);
     free(self);
 }
