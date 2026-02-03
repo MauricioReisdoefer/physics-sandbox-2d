@@ -1,7 +1,8 @@
 #ifndef MODULE_H
 #define MODULE_H
 
-typedef void (*UpdateFunction)(int deltaTime);
+typedef void (*UpdateFunction)(float);
+typedef void (*DestroyFunction)(Module *);
 
 typedef enum ModuleType
 {
@@ -16,10 +17,11 @@ typedef struct Module
 {
     Entity *owner;
     UpdateFunction update;
+    DestroyFunction destroy;
     ModuleType type;
 } Module;
 
-Module *Module_Create(ModuleType type, UpdateFunction update, Entity *owner);
+Module *Module_Create(ModuleType type, UpdateFunction update, DestroyFunction destroy);
 void Module_Destroy(Module *self);
 
 #endif

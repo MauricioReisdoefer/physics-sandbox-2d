@@ -107,7 +107,7 @@ void Entity_RemoveModule(Entity *self, ModuleType type)
 
         if (module != NULL && module->type == type)
         {
-            Module_Destroy(module);
+            module->destroy(module);
 
             self->modules[i] = self->modules[self->module_count - 1];
             self->modules[self->module_count - 1] = NULL;

@@ -3,7 +3,7 @@
 
 #include "module.h"
 
-Module *Module_Create(ModuleType type, UpdateFunction update)
+Module *Module_Create(ModuleType type, UpdateFunction update, DestroyFunction destroy)
 {
     Module *newModule = (Module *)malloc(sizeof(Module));
     if (newModule == NULL)
@@ -13,10 +13,6 @@ Module *Module_Create(ModuleType type, UpdateFunction update)
     }
     newModule->type = type;
     newModule->update = update;
+    newModule->destroy = destroy;
     return newModule;
-}
-void Module_Destroy(Module *self)
-{
-    if (self != NULL)
-        free(self);
 }
