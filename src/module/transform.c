@@ -5,9 +5,9 @@
 #include "module.h"
 #include "vector.h"
 
-UpdateFunction Transform_Update(float deltaTime)
+void Transform_Update(float deltaTime)
 {
-    void;
+    printf("fodase");
 }
 
 void Transform_Destroy(Module *self)
@@ -15,7 +15,11 @@ void Transform_Destroy(Module *self)
     Transform *transform = (Transform *)self;
     if (self == NULL)
         return;
+    free(transform);
     free(self);
+
+    transform = NULL;
+    self = NULL;
 }
 
 Transform *Transform_Create(Vector position, Vector scale, double rotation)

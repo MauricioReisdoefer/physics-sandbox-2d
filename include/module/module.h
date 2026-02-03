@@ -1,6 +1,8 @@
 #ifndef MODULE_H
 #define MODULE_H
 
+typedef struct Module Module;
+
 typedef void (*UpdateFunction)(float);
 typedef void (*DestroyFunction)(Module *);
 

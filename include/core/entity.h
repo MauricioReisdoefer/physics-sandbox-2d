@@ -14,7 +14,7 @@ typedef struct Entity
 Entity *Entity_Create();
 void Entity_Destroy(Entity *self);
 void Entity_AddModule(Entity *self, Module *module);
-void Entity_RemoveModule(Entity *self, Module *module);
+void Entity_RemoveModule(Entity *self, ModuleType type);
 Module *Entity_GetModule(Entity *self, ModuleType type);
 
 #endif

@@ -36,6 +36,7 @@ void Entity_Destroy(Entity *self)
     }
 
     free(self);
+    self = NULL;
 }
 
 void Entity_AddModule(Entity *self, Module *module)
