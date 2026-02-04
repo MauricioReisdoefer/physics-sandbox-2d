@@ -7,13 +7,14 @@
 
 typedef struct SpriteRenderer
 {
-    Module *base;
+    Module base;
     SDL_Texture *texture;
     SDL_FRect destiny;
-} RendererModule;
+} SpriteRenderer;
 
-SpriteRenderer *SpriteRenderer_Create(Module *owner);
-void SpriteRenderer_Destroy(SpriteRenderer *renderer);
+SpriteRenderer *SpriteRenderer_Create();
+void SpriteRenderer_Destroy(Module *self);
+void SpriteRenderer_Update(Module *self, float deltaTime);
 
 void SpriteRenderer_SetTexture(SpriteRenderer *renderer, SDL_Texture *texture);
 void SpriteRenderer_SetTextureFromPath(
