@@ -120,3 +120,16 @@ void Entity_RemoveModule(Entity *self, ModuleType type)
 
     printf("Entity_RemoveModule: module of requested type not found\n");
 }
+
+void Entity_Update(Entity *self, float deltaTime)
+{
+    if (self == NULL)
+        return;
+
+    for (int i = 0; i < self->module_count; i++)
+    {
+        Module *module = self->modules[i];
+        if (module != NULL)
+            module->update(self, deltaTime);
+    }
+}

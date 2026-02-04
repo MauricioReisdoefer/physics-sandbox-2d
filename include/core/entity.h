@@ -17,4 +17,6 @@ void Entity_AddModule(Entity *self, Module *module);
 void Entity_RemoveModule(Entity *self, ModuleType type);
 Module *Entity_GetModule(Entity *self, ModuleType type);
 
+void Entity_Update(Entity *self);
+
 #endif
