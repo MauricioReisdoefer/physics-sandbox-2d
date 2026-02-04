@@ -10,7 +10,8 @@ typedef enum ModuleType
 {
     MODULE_DEFAULT,
     MODULE_TRANSFORM,
-    MODULE_RIGIDBODY
+    MODULE_RIGIDBODY,
+    MODULE_RENDERER
 } ModuleType;
 
 typedef struct Entity Entity;
