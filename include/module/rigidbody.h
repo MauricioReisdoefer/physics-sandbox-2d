@@ -16,11 +16,6 @@ typedef struct Rigidbody
 } Rigidbody;
 
 Rigidbody *Rigidbody_Create(
-    Module base,
-    Vector velocity,
-    Vector force,
-    Vector acceleration,
-
     double mass,
     double damping);
 

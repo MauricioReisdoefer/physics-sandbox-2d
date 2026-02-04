@@ -5,9 +5,8 @@
 #include "module.h"
 #include "vector.h"
 
-void Transform_Update(float deltaTime)
+void Transform_Update(Module *self, float deltaTime)
 {
-    printf("fodase");
 }
 
 void Transform_Destroy(Module *self)

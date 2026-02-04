@@ -3,7 +3,7 @@
 
 typedef struct Module Module;
 
-typedef void (*UpdateFunction)(float);
+typedef void (*UpdateFunction)(Module *, float);
 typedef void (*DestroyFunction)(Module *);
 
 typedef enum ModuleType

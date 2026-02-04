@@ -14,6 +14,6 @@ typedef struct Transform
 
 Transform *Transform_Create(Vector position, Vector scale, double rotation);
 void Transform_Destroy(Module *self);
-void Transform_Update(float deltaTime);
+void Transform_Update(Module *self, float deltaTime);
 
 #endif

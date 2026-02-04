@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "rigidbody.h"
 #include "transform.h"
@@ -36,7 +37,7 @@ void Rigidbody_Update(Module *self, float deltaTime)
         Vector_Product_Double(rb->acceleration, deltaTime));
 
     double dampingFactor = 1.0 - rb->damping * deltaTime;
-    dampingFactor = max(dampingFactor, 0.0);
+    dampingFactor = fmax(dampingFactor, 0.0);
 
     rb->velocity = Vector_Product_Double(rb->velocity, dampingFactor);
 
@@ -51,8 +52,6 @@ void Rigidbody_Update(Module *self, float deltaTime)
 }
 
 Rigidbody *Rigidbody_Create(
-    Module base,
-
     double mass,
     double damping)
 {
