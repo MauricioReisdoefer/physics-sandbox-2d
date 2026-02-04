@@ -17,3 +17,13 @@ Rect Rect_Zero()
 {
     return (Rect){0, 0, 0, 0};
 }
+
+SDL_FRect Rect_ConvertToFRect(Rect rect)
+{
+    SDL_FRect out;
+    out.x = (float)rect.x;
+    out.y = (float)rect.y;
+    out.w = (float)rect.scaleX;
+    out.h = (float)rect.scaleY;
+    return out;
+}

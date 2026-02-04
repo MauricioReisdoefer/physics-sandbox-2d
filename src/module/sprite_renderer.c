@@ -2,6 +2,7 @@
 #include <SDL3/SDL.h>
 #include "module.h"
 #include "sprite_renderer.h"
+#include "rect.h"
 
 void SpriteRenderer_Destroy(Module *self)
 {
@@ -14,19 +15,27 @@ void SpriteRenderer_Destroy(Module *self)
     self = NULL;
 }
 
-void SpriteRenderer_Update(Module *self, float deltaTime);
-
-void SpriteRenderer_SetTexture(SpriteRenderer *renderer, SDL_Texture *texture);
+void SpriteRenderer_SetTexture(SpriteRenderer *renderer, SDL_Texture *texture)
+{
+    if (renderer == NULL)
+        return;
+    renderer->texture = texture;
+}
 void SpriteRenderer_SetTextureFromPath(
     SpriteRenderer *renderer,
-    SDL_Renderer *sdlRenderer,
-    const char *path);
+    const char *path)
+{
+    SDL_Texture *texture = IMG_LoadTexture(renderer->renderer, path);
+    SpriteRenderer_SetTexture(renderer, texture);
+}
 
 void SpriteRenderer_Render(
-    SpriteRenderer *renderer,
-    SDL_Renderer *sdlRenderer);
+    SpriteRenderer *renderer)
+{
+    SDL_RenderTexture(renderer->renderer, renderer->texture, NULL, NULL);
+}
 
-SpriteRenderer *SpriteRenderer_Create()
+SpriteRenderer *SpriteRenderer_Create(SDL_Renderer *sdl_renderer)
 {
     SpriteRenderer *sprite_renderer = (SpriteRenderer *)malloc(sizeof(SpriteRenderer));
     if (sprite_renderer == NULL)
@@ -38,7 +47,18 @@ SpriteRenderer *SpriteRenderer_Create()
     sprite_renderer->base.destroy = SpriteRenderer_Destroy;
     sprite_renderer->base.owner = NULL;
 
+    sprite_renderer->renderer = sdl_renderer;
     sprite_renderer->texture = NULL;
 
     return sprite_renderer;
+}
+
+void SpriteRenderer_Update(Module *self, float deltaTime)
+{
+    SpriteRenderer *sprite_renderer = (SpriteRenderer *)self;
+    if (sprite_renderer == NULL)
+    {
+        return NULL;
+    }
+    SpriteRenderer_Render(sprite_renderer);
 }

@@ -9,21 +9,22 @@ typedef struct SpriteRenderer
 {
     Module base;
     SDL_Texture *texture;
+    SDL_Renderer *renderer;
     SDL_FRect destiny;
 } SpriteRenderer;
 
-SpriteRenderer *SpriteRenderer_Create();
+SpriteRenderer *SpriteRenderer_Create(SDL_Renderer *renderer);
 void SpriteRenderer_Destroy(Module *self);
 void SpriteRenderer_Update(Module *self, float deltaTime);
 
 void SpriteRenderer_SetTexture(SpriteRenderer *renderer, SDL_Texture *texture);
 void SpriteRenderer_SetTextureFromPath(
     SpriteRenderer *renderer,
-    SDL_Renderer *sdlRenderer,
     const char *path);
 
 void SpriteRenderer_Render(
-    SpriteRenderer *renderer,
-    SDL_Renderer *sdlRenderer);
+    SpriteRenderer *renderer);
+
+void SpriteRenderer_ChangeRenderer(SpriteRenderer *self, SDL_Renderer *renderer);
 
 #endif
