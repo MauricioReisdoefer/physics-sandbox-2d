@@ -58,7 +58,7 @@ void Entity_AddModule(Entity *self, Module *module)
         printf("Entity_AddModule: max modules reached (%d)\n", MAX_MODULES);
         return;
     }
-
+    module->owner = self;
     self->modules[self->module_count++] = module;
 }
 
@@ -130,6 +130,6 @@ void Entity_Update(Entity *self, float deltaTime)
     {
         Module *module = self->modules[i];
         if (module != NULL)
-            module->update(self, deltaTime);
+            module->update(module, deltaTime);
     }
 }
