@@ -57,12 +57,12 @@ int main()
 
     Entity *entidade = Entity_Create();
     Transform *transform = Transform_Create((Vector){WIDTH / 2, HEIGHT / 2}, (Vector){50, 50}, 0);
-    Rigidbody *rb = Rigidbody_Create(1, 3);
+    Rigidbody *rb = Rigidbody_Create(4, 10);
 
     Entity_AddModule(entidade, (Module *)transform);
     Entity_AddModule(entidade, (Module *)rb);
 
-    float speed = 1500;
+    float speed = 5000;
 
     while (running)
     {
