@@ -11,7 +11,7 @@ typedef struct Rect
     double scaleY;
 } Rect;
 
-Rect Rect_Create(double x, double y);
+Rect Rect_Create(double x, double y, double scaleX, double scaleY);
 Rect Rect_Zero();
 SDL_FRect Rect_ConvertToFRect(Rect rect);
 

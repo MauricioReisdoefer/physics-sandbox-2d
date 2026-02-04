@@ -4,13 +4,14 @@
 #include <SDL3_image/SDL_image.h>
 #include <SDL3/SDL.h>
 #include "module.h"
+#include "rect.h"
 
 typedef struct SpriteRenderer
 {
     Module base;
     SDL_Texture *texture;
     SDL_Renderer *renderer;
-    SDL_FRect destiny;
+    Rect destiny;
 } SpriteRenderer;
 
 SpriteRenderer *SpriteRenderer_Create(SDL_Renderer *renderer);

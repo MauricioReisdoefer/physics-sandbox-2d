@@ -9,5 +9,8 @@ Not a game engine. Just math and physics.
 GCC Build
 
 ```bash
-gcc main.c src/core/entity.c src/math/vector.c src/module/rigidbody.c src/module/transform.c -I./include -I./include/core -I./include/math -I./include/module -I C:/libs/SDL3/include -L C:/libs/SDL3/lib -lSDL3 -o main.exe
+gcc main.c src/core/entity.c src/math/vector.c src/module/rigidbody.c src/module/transform.c src/module/sprite_renderer.c src/math/rect.c -I./include -I./include/core -I./include/math -I./include/module -I C:/libs/SDL3/include -L C:/libs/SDL3/lib -lSDL3 -o main.exe
+
+gcc main.c src/core/entity.c src/math/vector.c src/module/rigidbody.c src/module/transform.c src/module/sprite_renderer.c src/math/rect.c -I./include -I./include/core -I./include/math -I./include/module -I C:/libs/SDL3/include -I C:/libs/SDL3_image/include -L C:/libs/SDL3/lib -L C:/libs/SDL3_image/lib -lSDL3 -lSDL3_image -o main.exe
+
 ```
