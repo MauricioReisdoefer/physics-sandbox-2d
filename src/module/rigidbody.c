@@ -2,6 +2,8 @@
 #include <stdlib.h>
 
 #include "rigidbody.h"
+#include "transform.h"
+#include "entity.h"
 
 void Rigidbody_Destroy(Module *self)
 {
@@ -21,7 +23,30 @@ void Rigidbody_AddForce(Rigidbody *self, Vector vector)
     }
     self->force = Vector_Sum(self->force, vector);
 }
-void Rigidbody_Update(float deltaTime);
+void Rigidbody_Update(Module *self, float deltaTime)
+{
+    Rigidbody *rb = (Rigidbody *)self;
+
+    // Aceleração = Força / Massa
+    rb->acceleration = Vector_Divide_Double(rb->force, rb->mass);
+
+    // Velocidade = Velocidade + Aceleração * Tempo
+    rb->velocity = Vector_Sum(
+        rb->velocity,
+        Vector_Product_Double(rb->acceleration, deltaTime));
+
+    double dampingFactor = 1.0 - rb->damping * deltaTime;
+    dampingFactor = max(dampingFactor, 0.0);
+
+    rb->velocity = Vector_Product_Double(rb->velocity, dampingFactor);
+
+    Transform *transform = (Transform *)Entity_GetModule(self->owner, MODULE_TRANSFORM);
+
+    // Posição = Posição + Velocidade * Tempo
+    transform->position = Vector_Sum(
+        Vector_Product_Double(rb->velocity, deltaTime),
+        transform->position);
+}
 
 Rigidbody *Rigidbody_Create(
     Module base,

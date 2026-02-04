@@ -26,6 +26,6 @@ Rigidbody *Rigidbody_Create(
 
 void Rigidbody_Destroy(Module *self);
 void Rigidbody_AddForce(Rigidbody *self, Vector vector);
-void Rigidbody_Update(float deltaTime);
+void Rigidbody_Update(Module *self, float deltaTime);
 
 #endif
