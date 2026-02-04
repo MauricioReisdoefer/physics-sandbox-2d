@@ -64,3 +64,8 @@ Vector Vector_Divide_Double(Vector v, double x)
         v.x / x,
         v.y / x};
 }
+
+Vector Vector_Zero()
+{
+    return (Vector){0, 0};
+}

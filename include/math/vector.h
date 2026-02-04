@@ -17,4 +17,6 @@ Vector Vector_Division(Vector a, Vector b);
 Vector Vector_Product_Double(Vector v, double x);
 Vector Vector_Divide_Double(Vector v, double x);
 
+Vector Vector_Zero();
+
 #endif

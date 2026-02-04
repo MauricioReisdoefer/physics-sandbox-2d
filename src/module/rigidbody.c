@@ -46,6 +46,8 @@ void Rigidbody_Update(Module *self, float deltaTime)
     transform->position = Vector_Sum(
         Vector_Product_Double(rb->velocity, deltaTime),
         transform->position);
+
+    rb->force = Vector_Zero();
 }
 
 Rigidbody *Rigidbody_Create(
