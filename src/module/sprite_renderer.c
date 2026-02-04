@@ -32,7 +32,8 @@ void SpriteRenderer_SetTextureFromPath(
 void SpriteRenderer_Render(
     SpriteRenderer *renderer)
 {
-    SDL_RenderTexture(renderer->renderer, renderer->texture, NULL, NULL);
+    SDL_FRect Frect = {renderer->destiny.x, renderer->destiny.y, renderer->destiny.h, renderer->destiny.w};
+    SDL_RenderTexture(renderer->renderer, renderer->texture, NULL, &Frect);
 }
 
 SpriteRenderer *SpriteRenderer_Create(SDL_Renderer *sdl_renderer)
